@@ -4,10 +4,10 @@ import Lib
 
 -- Imprimimos la gráfica
 main :: IO ()
-main = print $ show encontrarArbolRecubridorMinimo
+main = print $ show (prim graph)
 
-type ArbolRecubridorMinimo = [(Integer, Integer, Integer)]
-
+type Grafica = [(Integer, Integer, Integer)]
+type Vertices = (Integer, Integer)
 -- Primero creamos una gráfica conexa, no dirigida y cuyas aristas están etiquetadas.
 -- verice, vertice, peso del arista
 graph = mkGraph False (1,5) 
@@ -15,5 +15,5 @@ graph = mkGraph False (1,5)
               (2,5,32),(3,4,61),(3,5,44),(4,5,93)]
 
 -- Llamamos a la funcion prim para encontrar el árbol
-encontrarArbolRecubridorMinimo :: ArbolRecubridorMinimo
-encontrarArbolRecubridorMinimo = prim graph
+encontrarArbolRecubridorMinimo :: Vertices -> Grafica -> Grafica
+encontrarArbolRecubridorMinimo v g = prim (mkGraph False v g)
